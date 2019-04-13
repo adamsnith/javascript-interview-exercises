@@ -13,9 +13,23 @@
 
     // Wrap the name and location of each company
     const listItems = companies
-        .map(company => `<li>${company.name} - ${company.location}</li>`)
+        .map(
+            company =>
+                `<li class="js-clickable" id="${company.id}">${
+                    company.name
+                } - ${company.location}</li>`
+        )
         .join("");
 
     // Attach to list
     list.innerHTML = listItems;
+
+    // Add event listener to each list item
+    const clickables = document.querySelectorAll(".js-clickable");
+
+    clickables.forEach(clickable =>
+        clickable.addEventListener("click", e => {
+            console.log(companies.filter(company => company.id == e.target.id));
+        })
+    );
 })();
