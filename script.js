@@ -12,17 +12,17 @@
     const list = document.getElementById("list");
 
     // Wrap the name and location of each company
-    const listItems = companies
+    let listItems = companies
         .map(
             company =>
-                `<li class="js-clickable" id="${company.id}">${
-                    company.name
-                } - ${company.location}</li>`
+                `<li class="js-clickable" id="${company.id}">
+                ${company.name} - ${company.location}</li>`
         )
         .join("");
 
     // Attach to list
     list.innerHTML = listItems;
+    listItems = null;
 
     // Add event listener to each list item
     const clickables = document.querySelectorAll(".js-clickable");
