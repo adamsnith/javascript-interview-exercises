@@ -1,39 +1,68 @@
-# Hi, we are Leeroy
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## First off; some brief information
+## Available Scripts
 
-Following is a set of exercises that we would like you to complete (e.g provide code examples). As there are plenty of different ways to approach each exercise it is important to understand that we are not looking for a specific answer; there is no right or wrong. Each exercise will merely serve as the foundation for a discussion where we can learn about your thought process and pick your brain regarding specific decisions that you made implementation-wise. Please review each exercise and get in touch with us if you have any questions or concerns, preferably prior to submitting your solutions.
+In the project directory, you can run:
 
-Last but not least, some guidelines.
+### `npm start`
 
-- You should fork the main repository and create a separate branch (named accordingly) to each of the exercises.
-- You should implement all exercises (except number 5 and 6) in vanilla javascript without the help of any third party libraries.
-- For exercise 5 & 6, you may use create-react-app unless you prefer doing all the heavy lifting yourself
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-With that said; good luck!
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-## Exercise 1
+### `npm test`
 
-Given the array (see line 3 in script.js) which consists of objects holding information regarding some amazing companies, we need your help to wrap the name and location of each company in a LI and attach it to the unordered list (#list) that we've already set up for you. Go!
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Exercise 2
+### `npm run build`
 
-Neat, that worked out well. Splendid! But... Being the curious cats we are, we would also like to know when someone clicks on a specific company in the list. Help! A console.log will do just fine, but you can get all fancy too if you happen to wear that hat.
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Exercise 3
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-We all know that requirements change over time - and the time for great change is now. Imagine that the array of companies has increased in size/length and suddenly contains some 100000 elements. Ouch, that's plenty! Given this rather drastic change, are there any (one is good, two is great, three or more is awesome) specific optimization strategies that you can employ to your implementation from exercise 2 to better fit the current conditions? Hint; think of optimization in terms of code readability and memory usage rather than focusing on optimizing for speed.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Exercise 4
+### `npm run eject`
 
-This time around we need to implement a feature which allows us to filter the displayed list of companies based on the company's location. The requirement is that a user somehow should be allowed to select multiple locations to be filtered. How would you deal with this?
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-*For this exercise, you can assume that the array of companies only contains the initial elements*
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Exercise 5
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-Framework time! How would you reimplement exercise 4 in React?
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Exercise 6
+## Learn More
 
-Framework time, redux! How would you reimplement exercise 4 using React and Redux (for state manegement)?
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
