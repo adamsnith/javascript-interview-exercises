@@ -8,28 +8,68 @@
         { id: 6, name: "Tesla", location: "Palo Alto" }
     ];
 
-    // Get the list
-    const list = document.getElementById("list");
+    let uniqueLocations = [
+        ...new Set(companies.map(company => company.location))
+    ];
 
-    // Wrap the name and location of each company
-    let listItems = companies
-        .map(
-            company =>
-                `<li class="js-clickable" id="${company.id}">
-                ${company.name} - ${company.location}</li>`
-        )
-        .join("");
+    const list = document.getElementById("list");
+    const filter = document.getElementById("filter");
 
     // Attach to list
-    list.innerHTML = listItems;
-    listItems = null;
+    list.innerHTML = getListItems(uniqueLocations);
 
-    // Add event listener to each list item
-    const clickables = document.querySelectorAll(".js-clickable");
+    // Attach to filter field
+    filter.innerHTML = getLocations();
 
-    clickables.forEach(clickable =>
-        clickable.addEventListener("click", e => {
-            console.log(companies.filter(company => company.id == e.target.id));
-        })
-    );
+    /**
+     * Returns wrapped input and label of unique locations
+     */
+    function getLocations() {
+        return uniqueLocations
+            .map(
+                location =>
+                    `<input class="js-filter" type="checkbox" name="${location}"> 
+					${location}`
+            )
+            .join("");
+    }
+
+    /**
+     * Returns one or array of wrapped list item with companies.
+     * @param {string|string[]} checkedLocations - One or several locations.
+     */
+    function getListItems(checkedLocations) {
+        return companies
+            .filter(company =>
+                checkedLocations.length > 0
+                    ? checkedLocations.includes(company.location)
+                    : company
+            )
+            .map(
+                company =>
+                    `<li class="js-clickable" id="${company.id}">
+						${company.name} - ${company.location}
+					</li>`
+            )
+            .join("");
+    }
+
+    /**
+     * Filters list by inputing checked locations to getListItems()
+     */
+    function filterItems() {
+        let checkedLocations = [
+            ...document.querySelectorAll(".js-filter:checked")
+        ].map(a => a.name);
+        list.innerHTML = getListItems(checkedLocations);
+    }
+
+    const filterElements = document.querySelector("#filter");
+    const listElements = document.querySelector("#list");
+
+    // Add Event listeners to parents
+    filterElements.addEventListener("click", () => filterItems());
+    listElements.addEventListener("click", e => {
+        console.log(companies.filter(company => company.id == e.target.id));
+    });
 })();
