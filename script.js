@@ -15,8 +15,9 @@
     let listItems = companies
         .map(
             company =>
-                `<li class="js-clickable" id="${company.id}">
-                ${company.name} - ${company.location}</li>`
+                `<li id="${company.name}">${company.name} - ${
+                    company.location
+                }</li>`
         )
         .join("");
 
@@ -25,11 +26,9 @@
     listItems = null;
 
     // Add event listener to each list item
-    const clickables = document.querySelectorAll(".js-clickable");
+    const listField = document.querySelector("#list");
 
-    clickables.forEach(clickable =>
-        clickable.addEventListener("click", e => {
-            console.log(companies.filter(company => company.id == e.target.id));
-        })
-    );
+    listField.addEventListener("click", e => {
+        console.log(e.target.innerHTML);
+    });
 })();
