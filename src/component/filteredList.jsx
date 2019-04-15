@@ -1,44 +1,41 @@
 import React, { Component } from "react";
+import { setFilter, setData } from "../actions/filterActions";
 import { getData } from "../services/fakeAPI";
+import { connect } from "react-redux";
 import Filter from "./filter";
 import List from "./list";
 
 class FilteredList extends Component {
-    state = {
-        filteredCities: []
-    };
-
     componentDidMount() {
         getData().then(data => {
-            this.setState({ data });
+            this.props.setData(data);
         });
     }
 
     // Returns unique set of locations based on data
     getLocations = () => {
-        return [...new Set(this.state.data.map(company => company.location))];
+        return [...new Set(this.props.data.map(company => company.location))];
     };
 
     // Returns list items based on filtered cities
     getListItems = () => {
-        let { filteredCities, data } = this.state;
+        let { filteredCities, data } = this.props;
         return filteredCities.length
             ? data.filter(item => filteredCities.includes(item.location))
             : data;
     };
 
-    // Filters cities based on props from <Filter>
+    // Adds and removes filtered cities to state
     handleFilter = filteredCity => {
-        let cities = this.state.filteredCities;
+        let cities = this.props.filteredCities;
         cities = cities.includes(filteredCity)
             ? cities.filter(city => city !== filteredCity)
             : [...cities, filteredCity];
-
-        this.setState({ filteredCities: cities });
+        this.props.setFilter(cities);
     };
 
     render() {
-        if (!this.state.data) {
+        if (!this.props.data) {
             return <div>Loading</div>;
         }
         return (
@@ -53,4 +50,12 @@ class FilteredList extends Component {
     }
 }
 
-export default FilteredList;
+const mapStateToProps = state => ({
+    filteredCities: state.app.filteredCities,
+    data: state.app.data
+});
+
+export default connect(
+    mapStateToProps,
+    { setFilter, setData }
+)(FilteredList);
